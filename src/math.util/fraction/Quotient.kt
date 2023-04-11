@@ -1,4 +1,4 @@
-package fraction
+package math.util.fraction
 
 import kotlin.math.sign
 
@@ -22,7 +22,6 @@ data class Quotient(
         val gcd = gcd(numerator, denominator)
         numerator /= gcd
         denominator /= gcd
-        numerator
         if (denominator < 0) {
             numerator = -numerator
             denominator = -denominator
