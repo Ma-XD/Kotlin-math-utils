@@ -5,10 +5,12 @@ import kotlin.math.sign
 @Suppress("unused")
 data class Quotient(
     private var numerator: Int,
-    private var denominator: Int
+    private var denominator: Int = 1
 ) : Number(), Comparable<Quotient> {
 
     companion object {
+        val ZERO = Quotient(0)
+        val ONE = Quotient(1)
         private tailrec fun gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
         private fun lcm(a: Int, b: Int): Int = a * b / gcd(a, b)
     }
@@ -67,7 +69,6 @@ data class Quotient(
             denominator = den * other.den
         )
 
-
     operator fun div(other: Quotient): Quotient =
         Quotient(
             numerator = num * other.den,
@@ -94,3 +95,6 @@ data class Quotient(
 
     override fun toString(): String = "$num/$den"
 }
+
+@Suppress("unused")
+fun Int.toQuotient() = Quotient(this)
